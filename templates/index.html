@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>UMW Alien Abduction Research Centre </h1>
+<p>Welcome to the Alien Abduction Research Centre at the 
+  <a href="http://umw.edu">University of Mary Washington</a></p>
+  
+					
+					<img src="{{ url_for('static', filename='img/ufo_003.jpg') }}" />
+        <p>Sighting by the <strong>UMW Research Team</strong> near <strong>Area 51</strong></p>
+        <p>You can view our entire list of abductions by clicking the tab above!</p>
+        <h2>Current Advisories:</h2>
+        <ul>
+          <li>21 January 2014. <strong>Tall Whites</strong> spotted near Slaughter Canyon, NV. Use extreme caution</li>
+          <li>20 January 2014. <strong>Tall Whites</strong> spotted near Reno, NV. </li>
+
+        </ul>
+{% endblock %}

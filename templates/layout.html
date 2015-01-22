@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Aliens</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <!-- class="logo_colour", allows you to change the colour of the text -->
+        <h1><a href="/"><span class="logo_colour"> Alien Abductions {{selectedMenu}}</span></a></h1>
+        <h2>Worldwide Site for Alien Abductions</h2>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li  {% if selectedMenu == "Home" %} class="selected" {% endif %}  >
+            <a href="/">Home</a></li>
+          <li  {% if selectedMenu == "Report" %} class="selected" {% endif %}  >
+            <a href="/report">Report an Abduction</a></li>
+          <li><a href="/todo">See List of Abductions</a></li>
+          
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <h1>Latest News</h1>
+        <h4>Alien Base on Moon</h4>
+        <h5>January 21st, 2014</h5>
+        <p>A mysterious object in a 90 degree angle featuring seven lighted dots has been spotted on the Moon's surface. <br /><a href="http://www.ibtimes.co.in/articles/535298/20140121/ufo-spotted-moon-surface-videos-alien-base.htm">Read more</a></p>
+        <h1>Useful Links</h1>
+        <ul>
+          <li><a href="http://www.ufocasebook.com/alienabductions.html">UFO Casebook</a></li>
+          <li><a href="http://www.alien-ufos.com/">Alien UFO</a></li>
+          <li><a href="http://www.coasttocoastam.com/">George Noory</a></li>
+          <li><a href="http://openseti.org/Hall.html">Open SETI</a></li>
+        </ul>
+        <h1>Search</h1>
+        <form method="post" action="#" id="search_form">
+          <p>
+            <input class="search" type="text" name="search_field" value="Enter keywords....." />
+            <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="{{ url_for('static', filename='img/search.png') }}" alt="Search" title="Search" />
+          </p>
+        </form>
+      </div>
+      <div id="content">
+         {%block content %}{% endblock %}
+      </div>
+    </div>
+    <div id="footer">
+      <p><a href="/">Home</a> | <a href="/report">Report an abduction</a> | <a href="contact.html">Contact Us</a></p>
+      <p>Copyright &copy; simple_light | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">design from HTML5webtemplates.co.uk</a></p>
+    </div>
+  </div>
+</body>
+</html>
