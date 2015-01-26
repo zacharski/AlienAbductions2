@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Top Music Albums</h1>
+<p>For February 2015</p>
+<table>
+<tr><th>Artist</th><th>Album</th></tr>
+{% for album in albums %}
+<tr><td>{{album[0]}}</td><td>{{album[1]}}</td></tr>
+{% endfor %}
+</table>
+
+  
+{% endblock %}
