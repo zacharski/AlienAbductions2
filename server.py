@@ -1,12 +1,14 @@
-#import psycopg2
-#import psycopg2.extras
+import psycopg2
+import psycopg2.extras
 
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
 def connectToDB():
-  connectionString = 'dbname=music user=postgres password=kirbyk9 host=localhost'
+#  connectionString = 'dbname=music user=postgres password=kirbyk9 host=localhost'
+  connectionString = 'dbname=music user=music password=2Vk0H39RLW6fA14GVd host=localhost'
+  print connectionString
   try:
     return psycopg2.connect(connectionString)
   except:
@@ -22,6 +24,7 @@ def report():
 
 @app.route('/report2', methods=['POST'])
 def report2():
+
   abduction = {'firstname': request.form['firstname'],
                'lastname': request.form['lastname']}
   return render_template('report2.html', abduction = abduction)
@@ -69,6 +72,7 @@ def showChartUsingPythonDictionary():
   except:
     print("Error executing select")
   results = cur.fetchall()
+  print "FACTORY"
   print results
   return render_template('music2.html', albums=results)
 
@@ -87,12 +91,17 @@ def showChartForms():
        (request.form['artist'], request.form['album'], request.form['rank']) )
     except:
       print("ERROR inserting into albums")
+      print("Tried: INSERT INTO albums (artist, name, rank) VALUES ('%s', '%s', %s);" %
+        (request.form['artist'], request.form['album'], request.form['rank']) )
+      conn.rollback()
+    conn.commit()
 
   try:
     cur.execute("select artist, name from albums")
   except:
     print("Error executing select")
   results = cur.fetchall()
+  print results
   for r in results:
     print r['artist']
   return render_template('music3.html', albums=results)
